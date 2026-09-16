@@ -1,0 +1,181 @@
+/* ============================================================================
+   CuidaDente — src/app.css
+   Tailwind 4 + daisyUI 5. The whole design system lives in this file as a
+   daisyUI theme, so components never hardcode a colour.
+
+   Imported once in src/routes/+layout.svelte:  import '../app.css';
+
+   NOTE: the Tailwind `teal` and `gold` ramps are deliberately OVERRIDDEN with
+   the CuidaDente brand ramps. `bg-teal-50` / `text-teal-700` are brand colours
+   in this codebase, not Tailwind defaults.
+   ========================================================================= */
+
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@plugin 'daisyui' {
+  themes: cuidadente --default;
+  logs: false;
+}
+
+/* ------------------------------------------------------------- THEME ----- */
+@plugin 'daisyui/theme' {
+  name: 'cuidadente';
+  default: true;
+  color-scheme: light;
+
+  /* Surfaces + ink */
+  --color-base-100: #ffffff;        /* cards, inputs */
+  --color-base-200: #f4f4f5;        /* app background, table head */
+  --color-base-300: #e9e9ea;        /* borders, dividers */
+  --color-base-content: #2e2e30;    /* gray-800 */
+
+  /* Gold = primary CTA. Gold needs dark ink for contrast. */
+  --color-primary: #f1c641;
+  --color-primary-content: #2e2e30;
+
+  /* Deep teal = secondary / admin actions */
+  --color-secondary: #35818d;
+  --color-secondary-content: #ffffff;
+
+  /* Light teal = accent, tags, highlights */
+  --color-accent: #6cc1ce;
+  --color-accent-content: #285f68;
+
+  /* Dark neutral = topbar, footer, sidebar */
+  --color-neutral: #2e2e30;
+  --color-neutral-content: #ffffff;
+
+  /* Feedback */
+  --color-info: #4aa6b4;    --color-info-content: #ffffff;
+  --color-success: #3d8c66; --color-success-content: #ffffff;
+  --color-warning: #dcae2c; --color-warning-content: #2e2e30;
+  --color-error: #c14638;   --color-error-content: #ffffff;
+
+  /* Geometry — soft, clinical-but-warm */
+  --radius-selector: 0.375rem;  /* checkbox, toggle, badge */
+  --radius-field: 0.75rem;      /* input, select, button */
+  --radius-box: 1rem;           /* card, modal */
+  --size-selector: 0.28125rem;
+  --size-field: 0.28125rem;     /* → default input/button height 45px */
+  --border: 1px;
+  --depth: 0;                   /* flat; we use real shadows, not daisy depth */
+  --noise: 0;
+}
+
+/* -------------------------------------------------------- TAILWIND THEME - */
+@theme {
+  --font-display: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand ramps (override Tailwind defaults — see note above) */
+  --color-gold-50: #fdf7e6;  --color-gold-100: #fbecc0; --color-gold-200: #f7dd8f;
+  --color-gold-300: #f4cf60; --color-gold-400: #f1c641; --color-gold-500: #dcae2c;
+  --color-gold-600: #b98f22; --color-gold-700: #8f6e1a;
+
+  --color-teal-50: #eef9fa;  --color-teal-100: #d3eef1; --color-teal-200: #a6dde3;
+  --color-teal-300: #8ad3db; --color-teal-400: #6cc1ce; --color-teal-500: #4aa6b4;
+  --color-teal-600: #35818d; --color-teal-700: #285f68;
+
+  /* Display type scale — used via text-display-lg etc. */
+  --text-display-lg: 2.5rem;   --text-display-lg--line-height: 1.15; --text-display-lg--letter-spacing: -0.01em; --text-display-lg--font-weight: 700;
+  --text-display-md: 2rem;     --text-display-md--line-height: 1.2;  --text-display-md--font-weight: 700;
+  --text-display-sm: 1.625rem; --text-display-sm--line-height: 1.25; --text-display-sm--font-weight: 600;
+
+  /* Shadows tuned to the brand ink */
+  --shadow-card: 0 2px 6px rgb(27 27 28 / 0.08);
+  --shadow-raised: 0 6px 16px rgb(27 27 28 / 0.10);
+  --shadow-float: 0 12px 28px rgb(27 27 28 / 0.14);
+
+  /* ---------------------------------------------------------- ANIMATION ---- */
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.8s ease both;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 3.2s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 2px 6px rgb(27 27 28 / 0.08); }
+    50%      { box-shadow: 0 2px 18px rgb(76 166 180 / 0.35); }
+  }
+}
+
+/* ------------------------------------------------------------- BASE ----- */
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 5.25rem; }
+  body { @apply bg-base-200 text-base-content font-sans antialiased; }
+  h1, h2, h3 { @apply font-display; }
+  h1 { @apply text-display-lg; }
+  h2 { @apply text-display-sm; }
+  h3 { @apply text-[1.0625rem] font-semibold leading-snug; }
+  ::selection { @apply bg-teal-200; }
+  /* daisyUI handles focus rings on its components; cover bare interactives */
+  :focus-visible { @apply outline-accent outline-2 outline-offset-2; }
+}
+
+/* --------------------------------------------------------- UTILITIES ---- */
+@utility section-y { @apply py-16 md:py-20; }
+
+/* Image placeholder — swap for a real <img> when photography arrives */
+@utility photo-slot {
+  @apply grid place-items-center overflow-hidden rounded-box;
+  background: repeating-linear-gradient(135deg, var(--color-teal-100) 0 14px, var(--color-teal-50) 14px 28px);
+}
+
+/* Eyebrow label above a section heading */
+@utility eyebrow { @apply font-sans text-xs font-semibold uppercase tracking-[0.08em] text-teal-600; }
+
+/* ------------------------------------------------------ SCROLL REVEAL ----- */
+/* Toggled by the `use:reveal` action (src/lib/actions.ts). The `.reveal`
+   class is only added client-side, so SSR/no-JS output is never hidden. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Underline grows from the left on hover (nav links). */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--color-teal-500);
+  transition: transform 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal, .reveal-visible { opacity: 1 !important; transform: none !important; }
+}
