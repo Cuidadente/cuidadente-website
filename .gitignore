@@ -17,6 +17,10 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.test
+.dev.vars
+
+# Wrangler
+worker-configuration.d.ts
 
 # Vite
 vite.config.js.timestamp-*

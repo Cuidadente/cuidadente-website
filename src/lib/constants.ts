@@ -24,8 +24,8 @@ export const CLINICS: Clinic[] = [
 		mobile: '929 272 500',
 		hours: 'Seg–Sex, 9h00–19h00',
 		mapUrl:
-			'https://www.openstreetmap.org/export/embed.html?bbox=-9.13930%2C38.74060%2C-9.13330%2C38.74660&layer=mapnik&marker=38.74360%2C-9.13633',
-		mapLink: 'https://www.google.com/maps/search/?api=1&query=38.74360%2C-9.13633'
+			'https://www.openstreetmap.org/export/embed.html?bbox=-9.13930%2C38.74060%2C-9.13330%2C38.74660&layer=mapnik&marker=38.743389%2C-9.134062',
+		mapLink: 'https://maps.app.goo.gl/gU9CfHSncz8r1NwD6'
 	},
 	{
 		id: 'prior-velho',
@@ -35,8 +35,8 @@ export const CLINICS: Clinic[] = [
 		mobile: '932 027 503',
 		hours: 'Seg–Sex, 9h00–19h00',
 		mapUrl:
-			'https://www.openstreetmap.org/export/embed.html?bbox=-9.12220%2C38.78690%2C-9.11620%2C38.79290&layer=mapnik&marker=38.78995%2C-9.11918',
-		mapLink: 'https://www.google.com/maps/search/?api=1&query=38.78995%2C-9.11918'
+			'https://www.openstreetmap.org/export/embed.html?bbox=-9.12220%2C38.78690%2C-9.11620%2C38.79290&layer=mapnik&marker=38.789971%2C-9.120656',
+		mapLink: 'https://maps.app.goo.gl/KJ1dQKiHchbE897i9'
 	}
 ];
 
