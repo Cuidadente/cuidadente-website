@@ -117,7 +117,7 @@
         <div
           role="tablist"
           aria-label="Escolher clínica"
-          class="inline-flex gap-1 rounded-full border border-base-300 bg-base-200 p-1">
+          class="flex w-full gap-1 rounded-full border border-base-300 bg-base-200 p-1 sm:inline-flex sm:w-auto">
           {#each CLINICS as c (c.id)}
             <button
               type="button"
@@ -126,7 +126,7 @@
               aria-selected={activeClinicId === c.id}
               aria-controls="panel-clinic"
               onclick={() => (activeClinicId = c.id)}
-              class="rounded-full px-6 py-2 text-sm font-semibold transition-colors duration-200 {activeClinicId ===
+              class="flex-1 rounded-full px-6 py-2 text-sm font-semibold transition-colors duration-200 sm:flex-none {activeClinicId ===
               c.id
                 ? 'bg-primary text-primary-content shadow-card'
                 : 'text-base-content/60 hover:text-base-content'}">

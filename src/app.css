@@ -115,10 +115,15 @@
 
 /* ------------------------------------------------------------- BASE ----- */
 @layer base {
-  html { scroll-behavior: smooth; scroll-padding-top: 5.25rem; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.25rem;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
   body { @apply bg-base-200 text-base-content font-sans antialiased; }
   h1, h2, h3 { @apply font-display; }
-  h1 { @apply text-display-lg; }
+  h1 { @apply text-display-md sm:text-display-lg; }
   h2 { @apply text-display-sm; }
   h3 { @apply text-[1.0625rem] font-semibold leading-snug; }
   ::selection { @apply bg-teal-200; }

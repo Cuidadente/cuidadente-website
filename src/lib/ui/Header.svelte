@@ -30,7 +30,7 @@
       <img
         src="/CuidaDente_Logo/png/CuidaDente_Logotipo-01.png"
         alt="CuidaDente — Clínica Médica Dentária"
-        class="block h-16 w-auto animate-fade-in transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.05]"
+        class="block h-12 w-auto animate-fade-in transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.05] sm:h-16"
       />
     </a>
 
