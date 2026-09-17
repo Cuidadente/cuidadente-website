@@ -42,7 +42,7 @@
   <!-- Hero -->
   <section class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-[1fr_.85fr] lg:px-12 lg:py-24">
     <div class="flex flex-col gap-6 animate-fade-up">
-      <h1 class="max-w-[32ch] text-balance" style="animation-delay:60ms">Uma equipa de confiança para cuidar do seu sorriso.</h1>
+      <h1 class="max-w-[32ch] text-balance" style="animation-delay:60ms">Desde 2000, o seu sorriso é a nossa história.</h1>
       <p class="max-w-[46ch] text-lg text-base-content/60" style="animation-delay:140ms">
         Deixe-nos os seus contactos e tratamos de encontrar o horário certo para a sua consulta — sem
         complicações.
