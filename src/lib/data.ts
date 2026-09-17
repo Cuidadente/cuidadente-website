@@ -82,12 +82,19 @@ export const currentUser: User = {
 };
 
 export const services = [
-	{ slug: 'checkup', title: 'Consulta de rotina', summary: 'Avaliação completa da sua saúde oral e plano de prevenção.' },
-	{ slug: 'cirurgia', title: 'Cirurgia oral', summary: 'Extrações e pequenas cirurgias orais com segurança e conforto.' },
-	{ slug: 'higiene', title: 'Higiene oral', summary: 'Limpeza profissional e polimento para um sorriso saudável.' },
-	{ slug: 'estetica', title: 'Estética dentária', summary: 'Branqueamento e tratamentos para melhorar o seu sorriso.' },
+	{ slug: 'cirurgia-oral', title: 'Cirurgia Oral', summary: 'Extrações e pequenas cirurgias orais com segurança e conforto.' },
+	{ slug: 'sisos-inclusos', title: 'Sisos inclusos', summary: 'Extração de sisos (terceiros molares) inclusos com planeamento cuidadoso.' },
+	{ slug: 'implantologia', title: 'Implantologia', summary: 'Substituição de dentes em falta com implantes e soluções duradouras.' },
 	{ slug: 'ortodontia', title: 'Ortodontia', summary: 'Alinhamentos e aparelhos para corrigir o posicionamento dos dentes.' },
-	{ slug: 'implantes', title: 'Implantes', summary: 'Substituição de dentes em falta com soluções duradouras.' }
+	{ slug: 'patologia-oral', title: 'Patologia oral e biópsias', summary: 'Diagnóstico e tratamento de lesões e doenças da cavidade oral.' },
+	{ slug: 'endodontia', title: 'Endodontia', summary: 'Tratamento de canal para recuperar dentes com lesões profundas.' },
+	{ slug: 'dentisteria', title: 'Dentisteria', summary: 'Restaurações e obturações estéticas e funcionais.' },
+	{ slug: 'prostodontia-fixa', title: 'Prostodontia fixa', summary: 'Coroa, pontes e próteses fixas para repor dentes em falta.' },
+	{ slug: 'prostodontia-removivel', title: 'Prostodontia removível', summary: 'Próteses removíveis para uma mastigação confortável.' },
+	{ slug: 'periodontologia', title: 'Periodontologia', summary: 'Tratamento das gengivas e prevenção da doença periodontal.' },
+	{ slug: 'oclusao', title: 'Oclusão', summary: 'Avaliação e tratamento do equilíbrio da mordida e das articulações.' },
+	{ slug: 'odontopediatria', title: 'Odontopediatria', summary: 'Cuidados dentários adaptados às crianças.' },
+	{ slug: 'harmonizacao-orofacial', title: 'Harmonização orofacial', summary: 'Procedimentos estéticos faciais em harmonia com a sua saúde oral.' }
 ];
 
 export const doctors: Doctor[] = [
