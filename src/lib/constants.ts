@@ -72,11 +72,22 @@ export const SERVICE_OPTIONS = [
 	{ value: 'cirurgia', label: 'Cirurgia oral' }
 ] as const;
 
-/** Preferred time of day to be contacted back. */
+/** Preferred time of day for the appointment slot. */
 export const PREFERENCE_OPTIONS = [
 	{ value: 'manha', label: 'Manhã' },
 	{ value: 'tarde', label: 'Tarde' },
 	{ value: 'indiferente', label: 'Indiferente' }
+] as const;
+
+/** Preferred weekdays for the appointment (multi-select). */
+export const DAY_OPTIONS = [
+	{ value: 'seg', label: 'Seg' },
+	{ value: 'ter', label: 'Ter' },
+	{ value: 'qua', label: 'Qua' },
+	{ value: 'qui', label: 'Qui' },
+	{ value: 'sex', label: 'Sex' },
+	{ value: 'sab', label: 'Sáb' },
+	{ value: 'dom', label: 'Dom' }
 ] as const;
 
 /**

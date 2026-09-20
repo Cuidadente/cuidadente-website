@@ -6,7 +6,12 @@ declare global {
 		// interface Locals {}
 		// interface PageData {}
 		// interface PageState {}
-		// interface Platform {}
+		interface Platform {
+			env: {
+				/** Secret API key (Cloudflare secret) used to authenticate lead intake. */
+				INTAKE_LEADS_API_KEY?: string;
+			};
+		}
 	}
 }
 

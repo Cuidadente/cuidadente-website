@@ -78,14 +78,17 @@ function post<T>(path: string, payload: unknown): Promise<T> {
 // ---------------------------------------------------------------------------
 
 export interface SubmitLeadPayload {
-	name: string;
+	full_name: string;
 	phone: string;
-	email?: string;
-	service: string;
-	preference: string;
-	clinic?: string;
-	message?: string;
-	consent: boolean;
+	email: string; // required on this intake path
+	/** Human-readable consultation motive (e.g. "Ortodontia"). */
+	motive: string;
+	/** Free-text description (clinic preference is prefixed); null when empty. */
+	description: string | null;
+	/** Preferred weekdays as English slugs, e.g. ['tue', 'thu']. ≤7. */
+	availability_days?: string[];
+	/** Preferred slot: 'morning' | 'afternoon'. */
+	availability_slot?: string;
 }
 
 export interface SubmitLeadResult {
@@ -93,9 +96,37 @@ export interface SubmitLeadResult {
 	firstName?: string;
 }
 
-/** POST {base}/leads */
-export function submitLead(payload: SubmitLeadPayload): Promise<SubmitLeadResult> {
-	return post<SubmitLeadResult>('/leads', payload);
+/**
+ * POST {base}/leads — submits the public appointment form.
+ *
+ * This posts to the same-origin `/api/leads` proxy route (handled by the
+ * Cloudflare Worker), which forwards the request to the separate API app
+ * server-side. The browser never talks to the API app directly.
+ */
+export async function submitLead(payload: SubmitLeadPayload): Promise<SubmitLeadResult> {
+	let res: Response;
+	try {
+		res = await fetch('/api/leads', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(payload)
+		});
+	} catch {
+		throw new ApiError('Não foi possível contactar o servidor. Tente novamente.');
+	}
+
+	const body = (await res.json().catch(() => ({}))) as (SubmitLeadResult & ApiFailureBody) | {};
+
+	if (!res.ok) {
+		const b = body as Partial<ApiFailureBody>;
+		throw new ApiError(
+			b?.message ?? 'Ocorreu um erro. Tente novamente.',
+			b?.fieldErrors ?? {},
+			res.status
+		);
+	}
+
+	return body as SubmitLeadResult;
 }
 
 // ---------------------------------------------------------------------------

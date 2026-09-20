@@ -29,6 +29,7 @@ export interface Lead {
 	serviceSlug: string;
 	preference: string;
 	clinic?: string;
+	preferredDays?: string[];
 	message?: string;
 	status: LeadStatus;
 	createdAt: string;
@@ -111,6 +112,7 @@ export const leads: Lead[] = [
 		email: 'ines.ferreira@example.com',
 		serviceSlug: 'checkup',
 		preference: 'manha',
+		preferredDays: ['seg', 'qua'],
 		clinic: 'areeiro',
 		message: 'Gostaria de marcar um check-up para a minha mãe, se possível.',
 		status: 'novo',
